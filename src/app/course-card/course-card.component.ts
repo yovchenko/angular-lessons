@@ -22,6 +22,15 @@ export class CourseCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isImageVisibel() {
+    return this.course && this.course.iconUrl;
+  }
+
+  cardClasses() {
+    if (this.course.category == 'BEGINNER')
+      return 'beginner'
+  }
+
   onCourseViewed(event: Event) {
     event.stopPropagation();
     console.log("card-component - button event " + event.target);
