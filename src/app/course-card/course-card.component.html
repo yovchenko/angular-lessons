@@ -17,6 +17,14 @@
             A detailed walk-through of the most important part of Angular - the Core and Common modules.
         </div>
 
+        <div class="course-category" [ngSwitch]="course.category">
+            <div class="category" *ngSwitchCase="'BEGINNER'"> {{ 
+                course.category[0] + 
+                course.category.slice(1).toLocaleLowerCase() 
+            }} 
+            </div>    
+        </div>
+
         <button (click)="onCourseViewed($event)"> View Course </button>
 
     </div>
