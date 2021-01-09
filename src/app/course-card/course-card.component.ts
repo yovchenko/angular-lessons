@@ -31,6 +31,13 @@ export class CourseCardComponent implements OnInit {
       return 'beginner'
   }
 
+  cardStyles() {
+    return {
+      'background': '#FDFEFE',
+      'background-size': 'cover'
+    }
+  }
+
   onCourseViewed(event: Event) {
     event.stopPropagation();
     console.log("card-component - button event " + event.target);

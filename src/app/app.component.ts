@@ -9,13 +9,8 @@ import {COURSES} from '../db-data';
 })
 export class AppComponent {
 
-coreCourse = COURSES[0];
-rxjsCourse= COURSES[1];
-ngrxCourse = COURSES[2];
+  courses = COURSES;
 
-  onCardClicked(event: Event){
-    console.info("App component - click event " + event.target);
-  }
   onCourseSelected(course: Course) {
     console.info("App component - custom event " + course.description);
   }
