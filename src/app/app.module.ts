@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 
@@ -11,6 +11,7 @@ import { SecondComponent } from "../second/second.component";
 import { ChildAComponent } from "../child-a/child-a.component";
 import { UserService } from "../user.service";
 import { UserGuard } from "../user.guard";
+import { ThirdComponent } from "../third/third.component";
 
 const ROUTES = [
   {
@@ -25,6 +26,7 @@ const ROUTES = [
     ]
   },
   { path: "second", component: SecondComponent },
+  { path: "third", component: ThirdComponent },
   { path: "", redirectTo: "/first", pathMatch: "full" } // redirect to `first-component`
 ];
 
@@ -33,13 +35,15 @@ const ROUTES = [
     BrowserModule,
     FormsModule,
     CommonModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
     HelloComponent,
     FirstComponent,
     SecondComponent,
+    ThirdComponent,
     ChildAComponent
   ],
   providers: [UserService, UserGuard],

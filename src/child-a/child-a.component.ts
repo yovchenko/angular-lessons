@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy,  OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { User } from "../user";
 import { UserService } from "../user.service";
@@ -8,7 +8,7 @@ import { UserService } from "../user.service";
   templateUrl: "./child-a.component.html",
   styleUrls: ["./child-a.component.css"]
 })
-export class ChildAComponent implements OnInit {
+export class ChildAComponent implements OnInit, OnDestroy {
   user: User;
   id: number;
   private sub: any;
@@ -25,9 +25,13 @@ export class ChildAComponent implements OnInit {
     });
   }
 
-  getUser(id) {
+  getUser(id: number) {
     this.userService.getUser(id).subscribe(user => {
       this.user = user;
     });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
