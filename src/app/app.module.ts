@@ -1,28 +1,48 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
+import { CommonModule } from "@angular/common";
 
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CourseCardComponent } from './course-card/course-card.component';
-import { CourseImageComponent } from './course-image/course-image.component';
-import { HighlightedDirective } from './directives/highlighted.directive';
-import { NgxUnlessDirective } from './directives/ngx-unless.directive';
-import {HttpClientModule} from '@angular/common/http';
+import { AppComponent } from "./app.component";
+import { HelloComponent } from "./hello.component";
+import { FirstComponent } from "../first/first.component";
+import { SecondComponent } from "../second/second.component";
+import { ChildAComponent } from "../child-a/child-a.component";
+import { UserService } from "../user.service";
+import { UserGuard } from "../user.guard";
+
+const ROUTES = [
+  {
+    path: "first",
+    component: FirstComponent,
+    children: [
+      {
+        path: "child/:id", // child route path
+        component: ChildAComponent,
+        canActivate: [UserGuard]
+      }
+    ]
+  },
+  { path: "second", component: SecondComponent },
+  { path: "", redirectTo: "/first", pathMatch: "full" } // redirect to `first-component`
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CourseCardComponent,
-    CourseImageComponent,
-    HighlightedDirective,
-    NgxUnlessDirective
-  ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule
+    FormsModule,
+    CommonModule,
+    RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  declarations: [
+    AppComponent,
+    HelloComponent,
+    FirstComponent,
+    SecondComponent,
+    ChildAComponent
+  ],
+  providers: [UserService, UserGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

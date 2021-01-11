@@ -1,0 +1,13 @@
+<h2>First Component</h2>
+
+<nav>
+	<ul *ngIf="users">
+		<li *ngFor="let user of users">
+			<a [routerLink]="['child/',user.id]" routerLinkActive="active">
+				{{ user.name }}
+			</a>
+		</li>
+	</ul>
+</nav>
+
+<router-outlet></router-outlet>

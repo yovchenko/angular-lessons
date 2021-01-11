@@ -1,27 +1,10 @@
-import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {COURSES} from '../db-data';
-import {Course} from './model/course';
-import {CourseCardComponent} from './course-card/course-card.component';
-import {HighlightedDirective} from './directives/highlighted.directive';
-import {Observable} from 'rxjs';
+import { Component, VERSION } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: [ './app.component.css' ]
 })
-export class AppComponent implements OnInit {
-
-
-  courses = COURSES;
-
-  constructor() {
-
-  }
-
-  ngOnInit() {
-  }
-
-
-
+export class AppComponent  {
+  name = 'Angular ' + VERSION.major;
 }

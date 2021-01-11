@@ -1,26 +1,10 @@
-<div class="top-menu">
+<hello name="{{ name }}"></hello>
 
-  <img class="logo"
-       src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
-
-</div>
-
-<div>
-
-  <div class="courses">
-
-    <course-card *ngFor="let course of courses"
-                 [course]="course">
-
-      <course-image [src]="course.iconUrl"></course-image>
-
-    </course-card>
-
-  </div>
-
-
-</div>
-
-
-
-
+<nav>
+	<ul>
+		<li><a routerLink="/first" routerLinkActive="active">First Component</a></li>
+		<li><a routerLink="/second" routerLinkActive="active">Second Component</a></li>
+	</ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>

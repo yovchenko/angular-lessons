@@ -1,4 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+/* Add application styles & imports to this file! */
+h1,
+h2,
+p {
+  text-align: center;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }
+ul {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.active {
+  color: red;
+}

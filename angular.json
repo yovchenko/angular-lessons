@@ -3,18 +3,17 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-course": {
+    "demo": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "",
+      "prefix": "app",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "aot": true,
-            "outputPath": "dist/angular-course",
+            "outputPath": "dist/demo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,27 +23,12 @@
               "src/assets"
             ],
             "styles": [
-              {
-                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-                "inject": true
-              },
               "src/styles.css"
             ],
-            "scripts": [
-              {
-                "input": "node_modules/document-register-element/build/document-register-element.js",
-                "inject": true
-              }
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -54,6 +38,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
+              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -65,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-course:build"
+            "browserTarget": "demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-course:build:production"
+              "browserTarget": "demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-course:build"
+            "browserTarget": "demo:build"
           }
         },
         "test": {
@@ -87,11 +72,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              {
-                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-                "inject": true
-              },
-              "src/styles.css"
+              "styles.css"
             ],
             "scripts": [],
             "assets": [
@@ -113,37 +94,7 @@
           }
         }
       }
-    },
-    "angular-course-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-course:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "angular-course:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
     }
   },
-  "defaultProject": "angular-course",
-  "cli": {
-    "analytics": "f1c06a76-7ca0-486f-aa03-e6051586f3c1"
-  }
+  "defaultProject": "demo"
 }
